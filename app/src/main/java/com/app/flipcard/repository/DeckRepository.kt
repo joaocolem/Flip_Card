@@ -70,4 +70,12 @@ class DeckRepository(context: Context) {
         }
         return db.insert("card", null, values)
     }
+
+    fun deleteDeck(deckId: Long) {
+        val db = dbHelper.writableDatabase
+
+        db.delete("card", "deck_id = ?", arrayOf(deckId.toString()))
+
+        db.delete("deck", "id = ?", arrayOf(deckId.toString()))
+    }
 }

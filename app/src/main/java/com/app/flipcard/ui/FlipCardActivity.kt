@@ -38,7 +38,7 @@ class FlipCardActivity : AppCompatActivity() {
 
         // Observa mudanças na lista de decks
         viewModel.decks.observe(this) { decks ->
-            adapter.updateList(decks)
+            adapter.updateList(decks) // Atualiza a lista no adaptador
         }
 
         // Adiciona novo deck ao clicar no botão
@@ -50,5 +50,10 @@ class FlipCardActivity : AppCompatActivity() {
                 binding.newDeckEditText.text.clear()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadDecks() // Recarrega os decks ao voltar para esta Activity
     }
 }

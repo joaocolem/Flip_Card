@@ -28,14 +28,9 @@ class DeckListRecycle(
         val deck = decks[position]
         holder.nameText.text = deck.name
 
-        // Configurando o clique no item
-        holder.itemView.setOnClickListener {
-            onDeckClick(deck) // Chama o callback passando o deck clicado
-        }
-
-        // Clique no botão de edição (se necessário)
+        // Configurando o clique no botão editIcon
         holder.editBtn.setOnClickListener {
-            println("Edit do Item ${deck.name} (ID: ${deck.id})")
+            onDeckClick(deck) // Chama o callback passando o deck clicado
         }
     }
 

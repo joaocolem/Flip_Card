@@ -41,14 +41,19 @@ class CardViewerActivity : AppCompatActivity() {
         // Exibe o primeiro card
         showCard()
 
-        // Configura o clique no container para mostrar o verso do card
-        binding.cardContainer.setOnClickListener {
+        // Configura o clique no botão "Mostrar Resposta"
+        binding.showAnswerButton.setOnClickListener {
             showAnswer()
         }
 
-        // Configura o clique no botão "Próximo" para ir para o próximo card
-        binding.nextButton.setOnClickListener {
-            nextCard()
+        // Configura o clique no botão "Acertou"
+        binding.correctButton.setOnClickListener {
+            markAnswer(true) // Marca como correto
+        }
+
+        // Configura o clique no botão "Errou"
+        binding.wrongButton.setOnClickListener {
+            markAnswer(false) // Marca como incorreto
         }
     }
 
@@ -56,7 +61,9 @@ class CardViewerActivity : AppCompatActivity() {
         if (currentIndex < cards.size) {
             val card = cards[currentIndex]
             binding.cardTextView.text = card.question // Mostra a pergunta
-            binding.nextButton.isEnabled = false // Desabilita o botão "Próximo" até ver a resposta
+            binding.showAnswerButton.isEnabled = true // Habilita o botão "Mostrar Resposta"
+            binding.correctButton.isEnabled = false // Desabilita os botões de acerto/erro
+            binding.wrongButton.isEnabled = false
         }
     }
 
@@ -64,7 +71,17 @@ class CardViewerActivity : AppCompatActivity() {
         if (currentIndex < cards.size) {
             val card = cards[currentIndex]
             binding.cardTextView.text = card.answer // Mostra a resposta
-            binding.nextButton.isEnabled = true // Habilita o botão "Próximo"
+            binding.showAnswerButton.isEnabled = false // Desabilita o botão "Mostrar Resposta"
+            binding.correctButton.isEnabled = true // Habilita os botões de acerto/erro
+            binding.wrongButton.isEnabled = true
+        }
+    }
+
+    private fun markAnswer(isCorrect: Boolean) {
+        if (currentIndex < cards.size) {
+            val card = cards[currentIndex]
+            repository.updateCardStatus(card.id, isCorrect) // Atualiza o status no banco
+            nextCard() // Passa para o próximo card
         }
     }
 

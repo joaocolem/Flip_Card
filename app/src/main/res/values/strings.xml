@@ -3,4 +3,5 @@
     <string name="deck_details_title">Detalhes do Deck</string>
     <string name="add_card">Adicionar Card</string>
     <string name="card_viewer_title">Card Viewer</string>
+    <string name="statistics_title">Tela Estatisticas</string>
 </resources>

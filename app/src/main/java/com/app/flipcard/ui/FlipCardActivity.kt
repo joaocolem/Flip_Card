@@ -24,12 +24,11 @@ class FlipCardActivity : AppCompatActivity() {
         binding = ActivityFlipCardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurando o adaptador com o clique no item
+        // Configurando o adaptador para o RecyclerView
         val adapter = DeckListRecycle(emptyList()) { selectedDeck ->
-            // Abrir a tela DeckDetailsActivity e passar o nome e ID do deck
             val intent = Intent(this, DeckDetailsActivity::class.java)
-            intent.putExtra("DECK_ID", selectedDeck.id) // Passa o ID do deck
-            intent.putExtra("DECK_NAME", selectedDeck.name) // Passa o nome do deck
+            intent.putExtra("DECK_ID", selectedDeck.id)
+            intent.putExtra("DECK_NAME", selectedDeck.name)
             startActivity(intent)
         }
 
@@ -38,7 +37,7 @@ class FlipCardActivity : AppCompatActivity() {
 
         // Observa mudanças na lista de decks
         viewModel.decks.observe(this) { decks ->
-            adapter.updateList(decks) // Atualiza a lista no adaptador
+            adapter.updateList(decks)
         }
 
         // Adiciona novo deck ao clicar no botão
@@ -50,10 +49,11 @@ class FlipCardActivity : AppCompatActivity() {
                 binding.newDeckEditText.text.clear()
             }
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadDecks() // Recarrega os decks ao voltar para esta Activity
+        // Configura o clique no botão "Estatísticas"
+        binding.statisticsButton.setOnClickListener {
+            val intent = Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

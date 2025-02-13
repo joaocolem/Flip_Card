@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     tools:context=".ui.FlipCardActivity"
     android:fitsSystemWindows="true">
 
+    <!-- Logo -->
     <ImageView
         android:id="@+id/logoImageView"
         android:layout_width="64dp"
@@ -17,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Título -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="146dp"
@@ -29,6 +32,7 @@
         app:layout_constraintStart_toEndOf="@id/logoImageView"
         app:layout_constraintTop_toTopOf="@id/logoImageView" />
 
+    <!-- Campo de texto para criar novo baralho -->
     <EditText
         android:id="@+id/newDeckEditText"
         android:layout_width="0dp"
@@ -44,6 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImageView" />
 
+    <!-- Botão para adicionar novo baralho -->
     <ImageButton
         android:id="@+id/addDeckButton"
         android:layout_width="48dp"
@@ -55,6 +60,7 @@
         app:layout_constraintTop_toTopOf="@id/newDeckEditText"
         android:layout_marginEnd="16dp" />
 
+    <!-- RecyclerView para exibir os decks -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/deckRecyclerView"
         android:layout_width="match_parent"
@@ -62,8 +68,18 @@
         app:layout_constraintTop_toBottomOf="@id/newDeckEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/statisticsButton"
         android:layout_marginTop="16dp" />
 
-
+    <!-- Botão Estatísticas -->
+    <Button
+        android:id="@+id/statisticsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estatísticas"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,13 @@
             android:theme="@style/Theme.FlipCard"
             android:exported="false" />
 
+        <!-- Nova tela para estatísticas -->
+        <activity
+            android:name=".ui.StatisticsActivity"
+            android:label="@string/statistics_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
     </application>
 
 </manifest>

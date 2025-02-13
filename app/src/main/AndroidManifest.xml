@@ -3,24 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".FlipCardApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlipCard"
         tools:targetApi="31">
+
+        <!-- Tela principal (lista de decks) -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.FlipCardActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.FlipCard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Tela de detalhes do deck -->
+        <activity
+            android:name=".ui.DeckDetailsActivity"
+            android:label="@string/deck_details_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
+        <!-- Tela para adicionar um novo card -->
+        <activity
+            android:name=".ui.AddCardActivity"
+            android:label="@string/add_card"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
+        <!-- Nova tela para visualizar os cards do deck -->
+        <activity
+            android:name=".ui.CardViewerActivity"
+            android:label="@string/card_viewer_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
+        <!-- Nova tela para estatísticas -->
+        <activity
+            android:name=".ui.StatisticsActivity"
+            android:label="@string/statistics_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
     </application>
 
 </manifest>

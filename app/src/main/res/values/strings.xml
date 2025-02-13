@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FlipCard</string>
+    <string name="deck_details_title">Detalhes do Deck</string>
+    <string name="add_card">Adicionar Card</string>
 </resources>

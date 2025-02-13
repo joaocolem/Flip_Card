@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.flipcard.R
 import com.app.flipcard.model.Deck
 
-class DeckListRecycle(var decks: List<Deck>) : RecyclerView.Adapter<DeckListRecycle.ViewHolder>() {
+class DeckListRecycle(
+    private var decks: List<Deck>,
+    private val onDeckClick: (Deck) -> Unit // Callback para cliques
+) : RecyclerView.Adapter<DeckListRecycle.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameText: TextView = itemView.findViewById(R.id.deckNameTextView)
-        val editBtn = itemView.findViewById<ImageButton>(R.id.editIcon)
+        val editBtn: ImageButton = itemView.findViewById(R.id.editIcon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +28,14 @@ class DeckListRecycle(var decks: List<Deck>) : RecyclerView.Adapter<DeckListRecy
         val deck = decks[position]
         holder.nameText.text = deck.name
 
-        holder.editBtn.setOnClickListener{
-            println("Edit do Item ${deck.name}")
+        // Configurando o clique no item
+        holder.itemView.setOnClickListener {
+            onDeckClick(deck) // Chama o callback passando o deck clicado
+        }
+
+        // Clique no botão de edição (se necessário)
+        holder.editBtn.setOnClickListener {
+            println("Edit do Item ${deck.name} (ID: ${deck.id})")
         }
     }
 

@@ -12,14 +12,13 @@ class DatabaseSQLite(context: Context) : SQLiteOpenHelper(
 ) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL(DatabaseContract.SQL_CREATE_TABLES)
-
-        db?.execSQL("INSERT INTO ${DatabaseContract.DECK.TABLE_NAME} (${DatabaseContract.DECK.COLUMN_NAME_NAME}) VALUES ('Matemática');")
-        db?.execSQL("INSERT INTO ${DatabaseContract.DECK.TABLE_NAME} (${DatabaseContract.DECK.COLUMN_NAME_NAME}) VALUES ('Ciências');")
+        db?.execSQL(DatabaseContract.DECK.SQL_CREATE)
+        db?.execSQL(DatabaseContract.CARD.SQL_CREATE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL(DatabaseContract.SQL_DROP_TABLES)
-        onCreate(db)
+        if (oldVersion < 2) {
+            db?.execSQL(DatabaseContract.CARD.SQL_CREATE) // Cria a tabela 'card' na atualização
+        }
     }
 }

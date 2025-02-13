@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".FlipCardApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,11 +12,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlipCard"
-
         tools:targetApi="31">
 
+        <!-- Tela principal (lista de decks) -->
         <activity
-            android:name=".FlipCardActivity"
+            android:name=".ui.FlipCardActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.FlipCard"
             android:exported="true">
@@ -24,6 +25,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Tela de detalhes do deck -->
+        <activity
+            android:name=".ui.DeckDetailsActivity"
+            android:label="@string/deck_details_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
+        <!-- Tela para adicionar um novo card -->
+        <activity
+            android:name=".ui.AddCardActivity"
+            android:label="@string/add_card"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
 
     </application>
 

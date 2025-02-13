@@ -1,5 +1,6 @@
 package com.app.flipcard.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.flipcard.R
 import com.app.flipcard.model.Deck
+import com.app.flipcard.ui.CardViewerActivity
 
 class DeckListRecycle(
     private var decks: List<Deck>,
@@ -28,9 +30,17 @@ class DeckListRecycle(
         val deck = decks[position]
         holder.nameText.text = deck.name
 
-        // Configurando o clique no botão editIcon
+        // Clique no botão editIcon
         holder.editBtn.setOnClickListener {
             onDeckClick(deck) // Chama o callback passando o deck clicado
+        }
+
+        // Clique no container do item
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, CardViewerActivity::class.java)
+            intent.putExtra("DECK_ID", deck.id) // Passa o ID do deck para a próxima Activity
+            context.startActivity(intent)
         }
     }
 

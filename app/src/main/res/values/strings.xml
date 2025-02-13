@@ -2,4 +2,5 @@
     <string name="app_name">FlipCard</string>
     <string name="deck_details_title">Detalhes do Deck</string>
     <string name="add_card">Adicionar Card</string>
+    <string name="card_viewer_title">Card Viewer</string>
 </resources>

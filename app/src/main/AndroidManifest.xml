@@ -40,6 +40,13 @@
             android:theme="@style/Theme.FlipCard"
             android:exported="false" />
 
+        <!-- Nova tela para visualizar os cards do deck -->
+        <activity
+            android:name=".ui.CardViewerActivity"
+            android:label="@string/card_viewer_title"
+            android:theme="@style/Theme.FlipCard"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -1,5 +1,8 @@
 package com.app.flipcard.ui
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +15,8 @@ class CardViewerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCardViewerBinding
     private lateinit var repository: DeckRepository
     private var cards: List<Card> = emptyList()
-    private var currentIndex = 0 // Índice do card atual
+    private var currentIndex = 0
+    private var isShowingAnswer = false // Indica se está mostrando a pergunta ou a resposta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +25,6 @@ class CardViewerActivity : AppCompatActivity() {
 
         repository = DeckRepository(applicationContext)
 
-        // Recupera o ID do deck enviado pela FlipCardActivity
         val deckId = intent.getLongExtra("DECK_ID", -1)
         if (deckId == -1L) {
             Toast.makeText(this, "Erro ao carregar os cards.", Toast.LENGTH_SHORT).show()
@@ -29,7 +32,6 @@ class CardViewerActivity : AppCompatActivity() {
             return
         }
 
-        // Carrega os cards do deck
         cards = repository.getCardsByDeck(deckId)
 
         if (cards.isEmpty()) {
@@ -38,60 +40,88 @@ class CardViewerActivity : AppCompatActivity() {
             return
         }
 
-        // Exibe o primeiro card
         showCard()
 
-        // Configura o clique no botão "Mostrar Resposta"
+        // Aplica flip ao tocar no botão "Mostrar Resposta"
         binding.showAnswerButton.setOnClickListener {
-            showAnswer()
+            flipCard()
         }
 
-        // Configura o clique no botão "Acertou"
         binding.correctButton.setOnClickListener {
-            markAnswer(true) // Marca como correto
+            markAnswer(true)
         }
 
-        // Configura o clique no botão "Errou"
         binding.wrongButton.setOnClickListener {
-            markAnswer(false) // Marca como incorreto
+            markAnswer(false)
         }
     }
 
     private fun showCard() {
         if (currentIndex < cards.size) {
             val card = cards[currentIndex]
-            binding.cardTextView.text = card.question // Mostra a pergunta
-            binding.showAnswerButton.isEnabled = true // Habilita o botão "Mostrar Resposta"
-            binding.correctButton.isEnabled = false // Desabilita os botões de acerto/erro
+            binding.cardTextView.text = card.question // Começa mostrando a pergunta
+            isShowingAnswer = false
+
+            binding.showAnswerButton.isEnabled = true
+            binding.correctButton.isEnabled = false
             binding.wrongButton.isEnabled = false
         }
     }
 
-    private fun showAnswer() {
-        if (currentIndex < cards.size) {
-            val card = cards[currentIndex]
-            binding.cardTextView.text = card.answer // Mostra a resposta
-            binding.showAnswerButton.isEnabled = false // Desabilita o botão "Mostrar Resposta"
-            binding.correctButton.isEnabled = true // Habilita os botões de acerto/erro
-            binding.wrongButton.isEnabled = true
+    private fun flipCard() {
+        if (currentIndex >= cards.size) return
+
+        val flipOut = ObjectAnimator.ofFloat(binding.cardContainer, "rotationY", 0f, 90f).apply {
+            duration = 300
+        }
+
+        val flipIn = ObjectAnimator.ofFloat(binding.cardContainer, "rotationY", -90f, 0f).apply {
+            duration = 300
+        }
+
+        flipOut.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationEnd(animation: Animator) {
+                val card = cards[currentIndex]
+                binding.cardTextView.text = if (isShowingAnswer) card.question else card.answer
+                isShowingAnswer = !isShowingAnswer
+
+                // Ajusta os botões corretamente
+                binding.showAnswerButton.isEnabled = !isShowingAnswer
+                binding.correctButton.isEnabled = isShowingAnswer
+                binding.wrongButton.isEnabled = isShowingAnswer
+
+                AnimatorSet().apply {
+                    play(flipIn)
+                    start()
+                }
+            }
+
+            override fun onAnimationStart(animation: Animator) {}
+            override fun onAnimationCancel(animation: Animator) {}
+            override fun onAnimationRepeat(animation: Animator) {}
+        })
+
+        AnimatorSet().apply {
+            play(flipOut)
+            start()
         }
     }
 
     private fun markAnswer(isCorrect: Boolean) {
         if (currentIndex < cards.size) {
             val card = cards[currentIndex]
-            repository.updateCardStatus(card.id, isCorrect) // Atualiza o status no banco
-            nextCard() // Passa para o próximo card
+            repository.updateCardStatus(card.id, isCorrect)
+            nextCard()
         }
     }
 
     private fun nextCard() {
         currentIndex++
         if (currentIndex < cards.size) {
-            showCard() // Mostra o próximo card
+            showCard()
         } else {
             Toast.makeText(this, "Você chegou ao final do deck!", Toast.LENGTH_SHORT).show()
-            finish() // Fecha a Activity quando todos os cards forem exibidos
+            finish()
         }
     }
 }

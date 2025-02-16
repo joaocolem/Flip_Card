@@ -12,23 +12,53 @@
         android:id="@+id/deckNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/progressContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/accuracyTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Nome do Deck" />
 
-    <!-- Porcentagem de acerto -->
-    <TextView
-        android:id="@+id/accuracyTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
+    <!-- Container para o anel e porcentagem -->
+    <FrameLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="75%" />
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Barra de progresso circular -->
+
+
+        <!-- Texto da porcentagem -->
+
+        <ProgressBar
+            android:id="@+id/progressRing"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+
+            android:progressDrawable="@drawable/circular_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/accuracyTextView"
+            android:layout_width="38dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="75%"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

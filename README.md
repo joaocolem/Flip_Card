@@ -1,5 +1,9 @@
 # FlipCard
 
+## Integrantes
+- João Colem
+- Gustavo Lima
+
 ## Objetivo da Aplicação
 
 O objetivo da aplicação FlipCard é fornecer uma ferramenta de estudo baseada em flashcards, onde os usuários podem criar decks de cartas, adicionar perguntas e respostas, e visualizar estatísticas de acertos.
@@ -32,3 +36,6 @@ O objetivo da aplicação FlipCard é fornecer uma ferramenta de estudo baseada 
    ```sh
    git clone https://github.com/seu-usuario/FlipCard.git
    cd FlipCard
+   ```
+
+

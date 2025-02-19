@@ -29,7 +29,7 @@
             android:textStyle="bold"
             android:maxLines="1" />
 
-        <!-- Alterado de ImageView para ImageButton -->
+
         <ImageButton
             android:id="@+id/editIcon"
             android:layout_width="24dp"

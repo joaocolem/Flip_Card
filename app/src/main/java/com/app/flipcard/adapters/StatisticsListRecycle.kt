@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.flipcard.R
 
 class StatisticsListRecycle(
-    private val statistics: List<Pair<String, Int>> // Lista de pares (nome do deck, % de acerto)
+    private val statistics: List<Pair<String, Int>>
 ) : RecyclerView.Adapter<StatisticsListRecycle.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,10 +30,10 @@ class StatisticsListRecycle(
         holder.deckNameTextView.text = deckName
         holder.accuracyTextView.text = "$accuracy%"
 
-        // Define o progresso do anel
+
         holder.progressRing.progress = accuracy
 
-        // Altera a cor do anel de progresso com base na precisão
+
         val ringColor = when {
             accuracy < 50 -> Color.RED
             accuracy < 80 -> Color.YELLOW

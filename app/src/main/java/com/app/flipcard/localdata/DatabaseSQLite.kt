@@ -18,11 +18,11 @@ class DatabaseSQLite(context: Context) : SQLiteOpenHelper(
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         if (oldVersion < 2) {
-            // Cria a tabela 'card' caso ela não exista (migração para a versão 2)
+
             db?.execSQL(DatabaseContract.CARD.SQL_CREATE)
         }
         if (oldVersion < 3) {
-            // Adiciona a nova coluna 'is_correct' na tabela 'card' (migração para a versão 3)
+
             db?.execSQL("ALTER TABLE ${DatabaseContract.CARD.TABLE_NAME} ADD COLUMN ${DatabaseContract.CARD.COLUMN_NAME_IS_CORRECT} INTEGER DEFAULT 0;")
         }
     }

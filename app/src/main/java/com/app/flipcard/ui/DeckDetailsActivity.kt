@@ -27,7 +27,7 @@ class DeckDetailsActivity : AppCompatActivity() {
 
         repository = DeckRepository(applicationContext)
 
-        // Recupera o ID e o nome do deck enviados pela FlipCardActivity
+
         deckId = intent.getLongExtra("DECK_ID", -1)
         val deckName = intent.getStringExtra("DECK_NAME") ?: "Sem Nome"
 
@@ -37,20 +37,20 @@ class DeckDetailsActivity : AppCompatActivity() {
             return
         }
 
-        // Exibe o nome do deck no topo da tela
+
         binding.deckNameTextView.text = deckName
 
-        // Carrega os cards associados ao deck
+
         loadCards()
 
-        // Configura o clique no botão de adicionar card
+
         binding.addCardButton.setOnClickListener {
             val intent = Intent(this, AddCardActivity::class.java)
-            intent.putExtra("DECK_ID", deckId) // Passa o ID do deck para a próxima Activity
+            intent.putExtra("DECK_ID", deckId)
             startActivity(intent)
         }
 
-        // Configura o clique no botão de excluir deck
+
         binding.deleteDeckButton.setOnClickListener {
             showDeleteConfirmationDialog()
         }
@@ -58,7 +58,7 @@ class DeckDetailsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Recarrega os cards quando voltar da AddCardActivity
+
         loadCards()
     }
 
@@ -85,8 +85,8 @@ class DeckDetailsActivity : AppCompatActivity() {
             DeckViewModelFactory((application as FlipCardApplication).repository)
         }
 
-        viewModel.deleteDeck(deckId) // Notifica o ViewModel para deletar o deck
+        viewModel.deleteDeck(deckId)
         Toast.makeText(this, "Deck excluído com sucesso!", Toast.LENGTH_SHORT).show()
-        finish() // Fecha a Activity e volta para a FlipCardActivity
+        finish()
     }
 }

@@ -10,7 +10,7 @@ class DeckViewModelFactory(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        // Verifica se a classe do ViewModel é DeckViewModel
+
         if (modelClass.isAssignableFrom(DeckViewModel::class.java)) {
             return DeckViewModel(repository) as T
         }

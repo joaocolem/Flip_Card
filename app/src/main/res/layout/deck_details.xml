@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.DeckDetailsActivity">
 
-    <!-- Nome do Deck -->
+
     <TextView
         android:id="@+id/deckNameTextView"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:padding="16dp"
         tools:text="Nome do Deck" />
 
-    <!-- RecyclerView para os cards -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cardRecyclerView"
         android:layout_width="0dp"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/addCardButton" />
 
-    <!-- Botão para adicionar card -->
+
     <Button
         android:id="@+id/addCardButton"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="16dp" />
 
-    <!-- Botão para excluir o deck -->
+
     <Button
         android:id="@+id/deleteDeckButton"
         android:layout_width="wrap_content"

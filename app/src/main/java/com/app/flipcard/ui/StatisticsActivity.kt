@@ -19,14 +19,14 @@ class StatisticsActivity : AppCompatActivity() {
 
         repository = DeckRepository(applicationContext)
 
-        // Carrega os decks e calcula as estatísticas
+
         val decks = repository.getAllDecks()
         val statistics = decks.map { deck ->
-            val accuracy = repository.getDeckAccuracy(deck.id) // Obtém a % de acerto do deck
+            val accuracy = repository.getDeckAccuracy(deck.id)
             Pair(deck.name, accuracy)
         }
 
-        // Configura o RecyclerView
+
         val adapter = StatisticsListRecycle(statistics)
         binding.statisticsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.statisticsRecyclerView.adapter = adapter

@@ -16,7 +16,7 @@ class CardViewerActivity : AppCompatActivity() {
     private lateinit var repository: DeckRepository
     private var cards: List<Card> = emptyList()
     private var currentIndex = 0
-    private var isShowingAnswer = false // Indica se está mostrando a pergunta ou a resposta
+    private var isShowingAnswer = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,7 @@ class CardViewerActivity : AppCompatActivity() {
 
         showCard()
 
-        // Aplica flip ao tocar no botão "Mostrar Resposta"
+
         binding.showAnswerButton.setOnClickListener {
             flipCard()
         }
@@ -59,7 +59,7 @@ class CardViewerActivity : AppCompatActivity() {
     private fun showCard() {
         if (currentIndex < cards.size) {
             val card = cards[currentIndex]
-            binding.cardTextView.text = card.question // Começa mostrando a pergunta
+            binding.cardTextView.text = card.question
             isShowingAnswer = false
 
             binding.showAnswerButton.isEnabled = true
@@ -85,7 +85,7 @@ class CardViewerActivity : AppCompatActivity() {
                 binding.cardTextView.text = if (isShowingAnswer) card.question else card.answer
                 isShowingAnswer = !isShowingAnswer
 
-                // Ajusta os botões corretamente
+
                 binding.showAnswerButton.isEnabled = !isShowingAnswer
                 binding.correctButton.isEnabled = isShowingAnswer
                 binding.wrongButton.isEnabled = isShowingAnswer

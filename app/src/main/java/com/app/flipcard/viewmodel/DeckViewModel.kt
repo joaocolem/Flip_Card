@@ -16,16 +16,16 @@ class DeckViewModel(private val repository: DeckRepository) : ViewModel() {
     }
 
     fun loadDecks() {
-        _decks.value = repository.getAllDecks() // Atualiza o LiveData com a lista mais recente
+        _decks.value = repository.getAllDecks()
     }
 
     fun addDeck(deck: Deck) {
         repository.addDeck(deck)
-        loadDecks() // Atualiza a lista após adicionar um novo deck
+        loadDecks()
     }
 
     fun deleteDeck(deckId: Long) {
         repository.deleteDeck(deckId)
-        loadDecks() // Atualiza a lista após excluir um deck
+        loadDecks()
     }
 }

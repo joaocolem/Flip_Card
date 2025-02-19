@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.StatisticsActivity">
 
-    <!-- Título da tela -->
+
     <TextView
         android:id="@+id/statisticsTitle"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
 
-    <!-- RecyclerView para exibir as estatísticas -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statisticsRecyclerView"
         android:layout_width="match_parent"

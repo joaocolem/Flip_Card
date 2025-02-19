@@ -4,7 +4,7 @@ class DatabaseContract {
 
     companion object {
         const val DATABASE_NAME: String = "flipcard.db"
-        const val DATABASE_VERSION = 3 // Incrementado para refletir mudanças no esquema
+        const val DATABASE_VERSION = 3
 
         const val SQL_CREATE_TABLES = DECK.SQL_CREATE + CARD.SQL_CREATE
         const val SQL_DROP_TABLES = DECK.SQL_DROP + CARD.SQL_DROP
@@ -31,7 +31,7 @@ class DatabaseContract {
         const val COLUMN_NAME_DECK_ID = "deck_id"
         const val COLUMN_NAME_QUESTION = "question"
         const val COLUMN_NAME_ANSWER = "answer"
-        const val COLUMN_NAME_IS_CORRECT = "is_correct" // Nova coluna para indicar se foi respondido corretamente
+        const val COLUMN_NAME_IS_CORRECT = "is_correct"
 
         const val SQL_CREATE = """
     CREATE TABLE IF NOT EXISTS $TABLE_NAME (

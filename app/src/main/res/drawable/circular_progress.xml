@@ -3,7 +3,7 @@
         <shape android:shape="ring"
             android:useLevel="false">
             <size android:width="50dp" android:height="50dp"/>
-            <solid android:color="#E0E0E0"/> <!-- Cor de fundo -->
+            <solid android:color="#E0E0E0"/>
         </shape>
     </item>
 
@@ -16,7 +16,7 @@
             <shape android:shape="ring"
                 android:useLevel="true">
                 <size android:width="50dp" android:height="50dp"/>
-                <solid android:color="#FF5722"/> <!-- Cor do progresso -->
+                <solid android:color="#FF5722"/>
             </shape>
         </rotate>
     </item>

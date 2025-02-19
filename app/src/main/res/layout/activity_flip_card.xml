@@ -19,9 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Título -->
 
-    <!-- Campo de texto para criar novo baralho -->
 
     <TextView
         android:id="@+id/titleTextView"
@@ -52,9 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImageView" />
 
-    <!-- Botão para adicionar novo baralho -->
 
-    <!-- RecyclerView para exibir os decks -->
 
     <ImageButton
         android:id="@+id/addDeckButton"

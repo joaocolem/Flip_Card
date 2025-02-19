@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <!-- Nome do deck -->
+
     <TextView
         android:id="@+id/deckNameTextView"
         android:layout_width="0dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Nome do Deck" />
 
-    <!-- Container para o anel e porcentagem -->
+
     <FrameLayout
         android:id="@+id/progressContainer"
         android:layout_width="55dp"
@@ -29,10 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Barra de progresso circular -->
 
-
-        <!-- Texto da porcentagem -->
 
         <ProgressBar
             android:id="@+id/progressRing"

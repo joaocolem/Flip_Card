@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FlipCard"
         tools:targetApi="31">
 
-        <!-- Tela principal (lista de decks) -->
+
         <activity
             android:name=".ui.FlipCardActivity"
             android:label="@string/app_name"
@@ -26,28 +26,28 @@
             </intent-filter>
         </activity>
 
-        <!-- Tela de detalhes do deck -->
+
         <activity
             android:name=".ui.DeckDetailsActivity"
             android:label="@string/deck_details_title"
             android:theme="@style/Theme.FlipCard"
             android:exported="false" />
 
-        <!-- Tela para adicionar um novo card -->
+
         <activity
             android:name=".ui.AddCardActivity"
             android:label="@string/add_card"
             android:theme="@style/Theme.FlipCard"
             android:exported="false" />
 
-        <!-- Nova tela para visualizar os cards do deck -->
+
         <activity
             android:name=".ui.CardViewerActivity"
             android:label="@string/card_viewer_title"
             android:theme="@style/Theme.FlipCard"
             android:exported="false" />
 
-        <!-- Nova tela para estatísticas -->
+
         <activity
             android:name=".ui.StatisticsActivity"
             android:label="@string/statistics_title"

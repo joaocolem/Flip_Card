@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.CardViewerActivity">
 
-    <!-- Container para o card com bordas arredondadas -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainer"
         android:layout_width="389dp"
@@ -26,9 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Frente do cartão (Pergunta) -->
 
-            <!-- Verso do cartão (Resposta) -->
             <TextView
                 android:id="@+id/cardTextView"
                 android:layout_width="match_parent"
@@ -53,7 +51,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Botão para mostrar a resposta -->
+
     <Button
         android:id="@+id/showAnswerButton"
         android:layout_width="wrap_content"
@@ -64,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
 
-    <!-- Botões para marcar como correto ou incorreto -->
+
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="0dp"
